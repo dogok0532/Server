@@ -28,8 +28,9 @@ namespace ServerCSharp
 
             ClientAccepted += listener_ClientAccepted;
 
-            tcpThread = new Thread(new ThreadStart(AcceptClient));
-            
+
+            ThreadStart threadStart = new ThreadStart(AcceptClient);
+            tcpThread = new Thread(threadStart);
         }
 
         private void RunServer()
@@ -62,11 +63,10 @@ namespace ServerCSharp
         #region 이벤트
 
         private event EventHandler ClientAccepted;
-  
 
         private void listener_ClientAccepted(object sender, EventArgs e)
         {
-
+            //txtClientResult
         }
 
         #endregion
